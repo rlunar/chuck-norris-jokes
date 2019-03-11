@@ -1,26 +1,30 @@
 # Select image from https://hub.docker.com/_/php/
-image: php:7.2
+image: karbon001/gitlab-ci-laravel-php:7.2
 
 # Select what we should cache
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
   - vendor/
 
 before_script:
 # Install git, the php image doesn't have installed
-- apt-get update -yqq
-- apt-get install git -yqq
+# - apt-get update -yqq
+# - apt-get install git -yqq
 
 # Install mysql driver
 # - docker-php-ext-install pdo_mysql
-- pecl install xdebug
-- docker-php-ext-enable xdebug
+
+# Install XDEBUG
+# - pecl install xdebug
+# - docker-php-ext-enable xdebug
 
 # Install composer
-- curl -sS https://getcomposer.org/installer | php
+# - curl -sS https://getcomposer.org/installer | php
 
 # Install all project dependencies
-- php composer.phar install
+# - php composer.phar install
+- composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 
 services:
 # - mysql
@@ -33,11 +37,11 @@ variables:
 # We test PHP7.2 (the default) with MySQL
 test:php72:mysql:
   script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text --colors=never
 
 # We test PHP7.3 with MySQL, but we allow it to fail
 test:php73:mysql:
-  image: php:7.3
+  image: karbon001/gitlab-ci-laravel-php:7.3
   script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text --colors=never
   allow_failure: true
