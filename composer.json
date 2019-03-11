@@ -1,0 +1,22 @@
+{
+    "name": "rluna/chuck-norris-jokes",
+    "description": "Create random Chuck Norris jokes.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roberto Luna Rojas",
+            "email": "roberto.luna.rojas@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "Rluna\\ChuckNorrisJokes\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Rluna\\ChuckNorrisJokes\\Tests\\": "tests/" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}
