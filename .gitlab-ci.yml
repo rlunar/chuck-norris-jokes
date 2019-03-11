@@ -13,6 +13,7 @@ before_script:
 
 # Install mysql driver
 # - docker-php-ext-install pdo_mysql
+- docker-php-ext-install xdebug
 
 # Install composer
 - curl -sS https://getcomposer.org/installer | php
@@ -32,13 +33,6 @@ variables:
 test:php72:mysql:
   script:
   - vendor/bin/phpunit --coverage-text
-
-# We test PHP7.1 with MySQL, but we allow it to fail
-test:php71:mysql:
-  image: php:7.1
-  script:
-  - vendor/bin/phpunit --coverage-text
-  allow_failure: true
 
 # We test PHP7.3 with MySQL, but we allow it to fail
 test:php73:mysql:
