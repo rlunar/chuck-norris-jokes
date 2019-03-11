@@ -1,5 +1,5 @@
 # Select image from https://hub.docker.com/_/php/
-image: php:7.1
+image: php:7.2
 
 # Select what we should cache
 cache:
@@ -28,14 +28,21 @@ variables:
   # MYSQL_DATABASE: hello_world_test
   # MYSQL_ROOT_PASSWORD: mysql
 
-# We test PHP5.6 (the default) with MySQL
-test:mysql:
+# We test PHP7.2 (the default) with MySQL
+test:php72:mysql:
   script:
   - vendor/bin/phpunit --coverage-text
 
-# We test PHP7 with MySQL, but we allow it to fail
-test:php7:mysql:
-  image: php:7
+# We test PHP7.1 with MySQL, but we allow it to fail
+test:php71:mysql:
+  image: php:7.1
+  script:
+  - vendor/bin/phpunit --coverage-text
+  allow_failure: true
+
+# We test PHP7.3 with MySQL, but we allow it to fail
+test:php73:mysql:
+  image: php:7.3
   script:
   - vendor/bin/phpunit --coverage-text
   allow_failure: true

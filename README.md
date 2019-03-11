@@ -1,0 +1,3 @@
+# Chuck Norris Jokes
+[![pipeline status](https://gitlab.elephpant.rocks/school/beyondcode/chuck-norris-jokes/badges/master/pipeline.svg)](https://gitlab.elephpant.rocks/school/beyondcode/chuck-norris-jokes/commits/master)
+[![coverage report](https://gitlab.elephpant.rocks/school/beyondcode/chuck-norris-jokes/badges/master/coverage.svg)](https://gitlab.elephpant.rocks/school/beyondcode/chuck-norris-jokes/commits/master)
