@@ -2,7 +2,7 @@
     "name": "rluna/chuck-norris-jokes",
     "description": "Create random Chuck Norris jokes.",
     "type": "library",
-    "license": "MIT",
+    "license": "GNU LGPLv3",
     "authors": [
         {
             "name": "Roberto Luna Rojas",
