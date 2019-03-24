@@ -18,7 +18,7 @@ composer require rluna/chuck-norris-jokes
 ```php
 use Rluna\ChuckNorrisJokes\JokeFactory;
 
-$jokes = new JokeFactory([$sample]);
+$jokes = new JokeFactory();
 $joke = $jokes->getRandomJoke();
 ```
 
