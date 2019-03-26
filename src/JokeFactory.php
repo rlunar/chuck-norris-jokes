@@ -2,23 +2,24 @@
 
 namespace Rluna\ChuckNorrisJokes;
 
+use GuzzleHttp\Client;
+
 class JokeFactory
 {
-    protected $jokes = [
-        'Chuck Norris counted to infinity... Twice.',
-        'Chuck Norris\' tears cure cancer. Too bad he has never cried.',
-        'The Great Wall of China was originally created to keep Chuck Norris out. It failed miserably.',
-    ];
+    const API_ENDPOINT = 'http://api.icndb.com/jokes/random';
 
-    public function __construct(array $jokes = null)
+    protected $client;
+
+    public function __construct(Client $client = null)
     {
-        if ($jokes) {
-            $this->jokes = $jokes;
-        }
+        $this->client = $client ?: new Client;
     }
 
     public function getRandomJoke()
     {
-        return $this->jokes[array_rand($this->jokes)];
+        $response = $this->client->get(self::API_ENDPOINT);
+        $joke =  json_decode($response->getBody()->getContents());
+
+        return $joke->value->joke;
     }
 }
