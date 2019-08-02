@@ -2,8 +2,10 @@
 
 namespace Rluna\ChuckNorrisJokes;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Rluna\ChuckNorrisJokes\Console\ChuckNorrisJoke;
+use Rluna\ChuckNorrisJokes\Http\Controllers\ChuckNorrisController;
 
 class ChuckNorrisJokesServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,10 @@ class ChuckNorrisJokesServiceProvider extends ServiceProvider
                 ChuckNorrisJoke::class,
             ]);
         }
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'chuck-norris');
+
+        Route::get('chuck-norris', ChuckNorrisController::class);
     }
 
     public function register()

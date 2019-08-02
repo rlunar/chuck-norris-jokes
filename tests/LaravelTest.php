@@ -34,4 +34,10 @@ class LaravelTest extends TestCase
         $output = Artisan::output();
         $this->assertSame('Chuck Norris can instantiate an abstract class.'.PHP_EOL, $output);
     }
+
+    /** @test */
+    public function the_route_can_be_accessed()
+    {
+        $this->get('/chuck-norris')->assertStatus(200);
+    }
 }
