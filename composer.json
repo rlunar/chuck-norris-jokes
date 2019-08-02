@@ -19,6 +19,17 @@
         "psr-4": { "Rluna\\ChuckNorrisJokes\\Tests\\": "tests/" }
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0",
+        "orchestra/testbench": "~3.8"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rluna\\ChuckNorrisJokes\\ChuckNorrisJokesServiceProvider"
+            ],
+            "aliases": {
+                "ChuckNorris": "Rluna\\ChuckNorrisJokes\\Facades\\ChuckNorris"
+            }
+        }
     }
 }
