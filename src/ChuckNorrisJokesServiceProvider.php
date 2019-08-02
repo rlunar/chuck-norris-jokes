@@ -3,7 +3,7 @@
 namespace Rluna\ChuckNorrisJokes;
 
 use Illuminate\Support\ServiceProvider;
-use App\ChuckNorrisJokes\JokeFactory;
+use Rluna\ChuckNorrisJokes\JokeFactory;
 
 class ChuckNorrisJokesServiceProvider extends ServiceProvider
 {
