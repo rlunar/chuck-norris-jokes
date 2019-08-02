@@ -22,7 +22,7 @@ class TestCase extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'ChuckNorris' => 'Rluna\ChuckNorrisJokes\Facades\ChuckNorris'
+            'ChuckNorris' => 'Rluna\ChuckNorrisJokes\Facades\ChuckNorris',
         ];
     }
 }

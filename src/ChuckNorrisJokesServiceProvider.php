@@ -4,7 +4,6 @@ namespace Rluna\ChuckNorrisJokes;
 
 use Illuminate\Support\ServiceProvider;
 use Rluna\ChuckNorrisJokes\Console\ChuckNorrisJoke;
-use Rluna\ChuckNorrisJokes\JokeFactory;
 
 class ChuckNorrisJokesServiceProvider extends ServiceProvider
 {
@@ -12,7 +11,7 @@ class ChuckNorrisJokesServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ChuckNorrisJoke::class
+                ChuckNorrisJoke::class,
             ]);
         }
     }
