@@ -2,11 +2,11 @@
 
 namespace Rluna\ChuckNorrisJokes\Tests;
 
-use Illuminate\Support\Facades\Artisan;
 use Orchestra\Testbench\TestCase;
-use Rluna\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
-use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Illuminate\Support\Facades\Artisan;
 use Rluna\ChuckNorrisJokes\Models\Joke;
+use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Rluna\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
 
 class LaravelTest extends TestCase
 {
@@ -39,7 +39,7 @@ class LaravelTest extends TestCase
         //     'database' => ':memory:',
         //     'prefix'   => '',
         // ]);
-        
+
         include_once __DIR__.'/../database/migrations/create_jokes_table.php.stub';
         (new \CreateJokesTable)->up();
     }
