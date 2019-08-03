@@ -2,10 +2,11 @@
 
 namespace Rluna\ChuckNorrisJokes\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
-use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Orchestra\Testbench\TestCase;
 use Rluna\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
+use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Rluna\ChuckNorrisJokes\Models\Joke;
 
 class LaravelTest extends TestCase
 {
@@ -21,6 +22,26 @@ class LaravelTest extends TestCase
         return [
             'ChuckNorris' => ChuckNorris::class,
         ];
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        // $app['config']->set('database.default', 'testbench');
+        // $app['config']->set('database.connections.testbench', [
+        //     'driver'   => 'sqlite',
+        //     'database' => ':memory:',
+        //     'prefix'   => '',
+        // ]);
+        
+        include_once __DIR__.'/../database/migrations/create_jokes_table.php.stub';
+        (new \CreateJokesTable)->up();
     }
 
     /** @test */
@@ -46,5 +67,19 @@ class LaravelTest extends TestCase
                 ->assertViewIs('chuck-norris::joke')
                 ->assertViewHas('joke', $joke)
                 ->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_can_access_the_database()
+    {
+        $testJoke = 'this is funny';
+
+        $joke = new Joke();
+        $joke->joke = $testJoke;
+        $joke->save();
+
+        $newJoke = Joke::find($joke->id);
+
+        $this->assertSame($newJoke->joke, $testJoke);
     }
 }
