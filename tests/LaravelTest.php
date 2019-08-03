@@ -38,6 +38,13 @@ class LaravelTest extends TestCase
     /** @test */
     public function the_route_can_be_accessed()
     {
-        $this->get('/chuck-norris')->assertStatus(200);
+        $joke = 'Chuck Norris knows Victoria\'s secret.';
+        ChuckNorris::shouldReceive('getRandomJoke')
+                    ->once()
+                    ->andReturn($joke);
+        $this->get('/chuck-norris')
+                ->assertViewIs('chuck-norris::joke')
+                ->assertViewHas('joke', $joke)
+                ->assertStatus(200);
     }
 }
