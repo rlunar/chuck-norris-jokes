@@ -16,7 +16,7 @@ class ChuckNorrisJokesServiceProvider extends ServiceProvider
                 ChuckNorrisJoke::class,
             ]);
         }
-        
+
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'chuck-norris');
 
         $this->publishes([
