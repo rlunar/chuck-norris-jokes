@@ -86,7 +86,6 @@ class LaravelTest extends TestCase
     /** @test */
     public function it_calls_the_api()
     {
-        // $joke = (new JokeFactory)->getRandomJoke();
         $joke = ChuckNorris::getRandomJoke();
         $this->assertContains('Chuck', $joke);
     }
