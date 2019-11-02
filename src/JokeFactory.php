@@ -2,7 +2,6 @@
 
 namespace Rluna\ChuckNorrisJokes;
 
-use Gocanto\HttpClient\HttpClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
@@ -22,6 +21,7 @@ class JokeFactory
     public function __construct(Client $client = null)
     {
         $this->client = $client ?? new Client;
+
         return;
 
         $handlerStack = HandlerStack::create();
@@ -47,9 +47,9 @@ class JokeFactory
                 // do something inside the callable.
 //                echo $stats->getTransferTime() . "\n";
                 Log::debug(
-                    'Request => ' . $stats->getRequest()->getBody() .
-                    ' | Response => ' . $stats->getResponse()->getBody() .
-                    ' | Tx Time => ' . $stats->getTransferTime()
+                    'Request => '.$stats->getRequest()->getBody().
+                    ' | Response => '.$stats->getResponse()->getBody().
+                    ' | Tx Time => '.$stats->getTransferTime()
                 );
 //                $logger->debug(
 //                    'Request' . $stats->getRequest()->getBody() .
@@ -81,9 +81,9 @@ class JokeFactory
                     // value.
                     // var_dump($stats->getHandlerErrorData());
                 }
-            }
+            },
         ]);
-        
+
         $joke = json_decode((string) $response->getBody());
         // $joke = json_decode($response->getBody()->getContents());
 
