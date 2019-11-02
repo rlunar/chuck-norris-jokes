@@ -3,13 +3,8 @@
 namespace Rluna\ChuckNorrisJokes;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\MessageFormatter;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\TransferStats;
-use Illuminate\Log\LogManager;
 use Illuminate\Support\Facades\Log;
-use Monolog\Logger;
 
 class JokeFactory
 {
