@@ -2,11 +2,11 @@
 
 namespace Rluna\ChuckNorrisJokes\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
-use Rluna\ChuckNorrisJokes\Models\Joke;
-use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Orchestra\Testbench\TestCase;
 use Rluna\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
+use Rluna\ChuckNorrisJokes\Facades\ChuckNorris;
+use Rluna\ChuckNorrisJokes\Models\Joke;
 
 class LaravelTest extends TestCase
 {
@@ -81,5 +81,12 @@ class LaravelTest extends TestCase
         $newJoke = Joke::find($joke->id);
 
         $this->assertSame($newJoke->joke, $testJoke);
+    }
+
+    /** @test */
+    public function it_calls_the_api()
+    {
+        $joke = ChuckNorris::getRandomJoke();
+        $this->assertContains('Chuck', $joke);
     }
 }
